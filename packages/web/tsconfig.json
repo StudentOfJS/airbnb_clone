@@ -27,7 +27,8 @@
       "react-router-dom",
       "prop-types",
       "antd",
-      "formik"
+      "formik",
+      "yup"
     ]
   },
   "exclude": [
