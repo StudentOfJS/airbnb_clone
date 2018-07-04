@@ -80,12 +80,6 @@ const emailNotLongEnough = "email must be at least 3 characters";
 const passwordNotLongEnough = "password must be at least 3 characters";
 const invalidEmail = "email must be a valid email";
 
-const registerPasswordValidation = yup
-  .string()
-  .min(3, passwordNotLongEnough)
-  .max(255)
-  .required();
-
 const validationSchema = yup.object().shape({
   email: yup
     .string()
@@ -93,7 +87,11 @@ const validationSchema = yup.object().shape({
     .max(255)
     .email(invalidEmail)
     .required(),
-  password: registerPasswordValidation
+  password: yup
+    .string()
+    .min(3, passwordNotLongEnough)
+    .max(255)
+    .required()
 });
 
 export const RegisterView = withFormik<Props, FormValues>({
