@@ -36,10 +36,7 @@ class RegisterForm extends React.PureComponent<
       errors
     } = this.props;
     return (
-      <div
-        // tslint:disable-next-line:jsx-no-multiline-js
-        style={{ display: "flex" }}
-      >
+      <div style={{ display: "flex" }}>
         <Form style={{ margin: "auto" }} onSubmit={handleSubmit}>
           <FormItem
             help={touched.email && errors.email ? errors.email : ""}
@@ -108,6 +105,8 @@ const validationSchema = yup.object().shape({
 });
 
 export const RegisterView = withFormik<Props, FormValues>({
+  validateOnChange: true,
+  validateOnBlur: false,
   validationSchema,
   mapPropsToValues: () => ({ email: "", password: "" }),
   handleSubmit: async (values, { props, setErrors, setSubmitting }) => {
