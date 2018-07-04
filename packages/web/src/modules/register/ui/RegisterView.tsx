@@ -1,9 +1,14 @@
 import * as React from "react";
-import { Form, Icon, Input, Button } from "antd";
-import { withFormik, FormikErrors, FormikProps } from "formik";
+import * as AntD from "antd";
+import { withFormik, FormikErrors, FormikProps, Field, Form } from "formik";
 import { validUserSchema } from "@airbnb_clone/common";
+import InputField from "../../shared/InputField";
 
-const FormItem = Form.Item;
+const {
+  Form: { Item: FormItem },
+  Icon,
+  Button
+} = AntD;
 
 interface FormValues {
   email: string;
@@ -27,44 +32,31 @@ class RegisterForm extends React.PureComponent<
     return "success";
   };
   render() {
-    const {
-      values,
-      handleChange,
-      handleBlur,
-      handleSubmit,
-      touched,
-      errors
-    } = this.props;
+    const { handleSubmit } = this.props;
     return (
       <div style={{ display: "flex" }}>
         <Form style={{ margin: "auto" }} onSubmit={handleSubmit}>
-          <FormItem
-            help={touched.email && errors.email ? errors.email : ""}
-            validateStatus={this.validate(touched.email, errors.email)}
-          >
-            <Input
-              prefix={<Icon type="user" style={{ color: "rgba(0,0,0,.25)" }} />}
-              name="email"
-              placeholder="email"
-              value={values.email}
-              onChange={handleChange}
-              onBlur={handleBlur}
-            />
-          </FormItem>
-          <FormItem
-            help={touched.password && errors.password ? errors.password : ""}
-            validateStatus={this.validate(touched.password, errors.password)}
-          >
-            <Input
-              prefix={<Icon type="lock" style={{ color: "rgba(0,0,0,.25)" }} />}
-              name="password"
-              type="password"
-              placeholder="password"
-              value={values.password}
-              onChange={handleChange}
-              onBlur={handleBlur}
-            />
-          </FormItem>
+          <Field
+            name="email"
+            // tslint:disable-next-line:jsx-no-multiline-js
+            prefix={
+              <Icon type="user" style={{ color: "rgba(0,0,0,.25)" }} /> as any
+              // tslint:disable-next-line:jsx-curly-spacing
+            }
+            placeholder="email"
+            component={InputField}
+          />
+          <Field
+            name="password"
+            // tslint:disable-next-line:jsx-no-multiline-js
+            prefix={
+              <Icon type="lock" style={{ color: "rgba(0,0,0,.25)" }} /> as any
+              // tslint:disable-next-line:jsx-curly-spacing
+            }
+            placeholder="password"
+            type="password"
+            component={InputField}
+          />
           <FormItem>
             <Button
               type="primary"
