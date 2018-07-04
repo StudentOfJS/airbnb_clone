@@ -17,6 +17,15 @@ interface Props {
 class RegisterForm extends React.PureComponent<
   FormikProps<FormValues> & Props
 > {
+  validate = (touched: boolean | undefined, errors: any) => {
+    if (!touched) {
+      return "validating";
+    }
+    if (errors) {
+      return "error";
+    }
+    return "success";
+  };
   render() {
     const {
       values,
@@ -32,7 +41,10 @@ class RegisterForm extends React.PureComponent<
         style={{ display: "flex" }}
       >
         <Form style={{ margin: "auto" }} onSubmit={handleSubmit}>
-          <FormItem help={touched.email && errors.email ? errors.email : ""}>
+          <FormItem
+            help={touched.email && errors.email ? errors.email : ""}
+            validateStatus={this.validate(touched.email, errors.email)}
+          >
             <Input
               prefix={<Icon type="user" style={{ color: "rgba(0,0,0,.25)" }} />}
               name="email"
@@ -44,6 +56,7 @@ class RegisterForm extends React.PureComponent<
           </FormItem>
           <FormItem
             help={touched.password && errors.password ? errors.password : ""}
+            validateStatus={this.validate(touched.password, errors.password)}
           >
             <Input
               prefix={<Icon type="lock" style={{ color: "rgba(0,0,0,.25)" }} />}
