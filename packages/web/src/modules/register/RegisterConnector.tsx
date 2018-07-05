@@ -10,7 +10,7 @@ interface RegisterConnectorProps {
 const RegisterConnector: React.SFC<RegisterConnectorProps> = props => {
   return (
     <RegisterController>
-      {({ submit }) => <RegisterView submit={submit} />}
+      {({ submit }: { submit: any }) => <RegisterView submit={submit} />}
     </RegisterController>
   );
 };
