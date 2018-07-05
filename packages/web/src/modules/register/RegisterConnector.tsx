@@ -1,4 +1,6 @@
 import * as React from "react";
+import { RegisterController } from "@airbnb_clone/controller";
+
 import { RegisterView } from "./ui/RegisterView";
 
 interface RegisterConnectorProps {
@@ -6,11 +8,11 @@ interface RegisterConnectorProps {
 }
 
 const RegisterConnector: React.SFC<RegisterConnectorProps> = props => {
-  const dummySubmit = async (values: any) => {
-    console.log(values);
-    return null;
-  };
-  return <RegisterView submit={dummySubmit} />;
+  return (
+    <RegisterController>
+      {({ submit }) => <RegisterView submit={submit} />}
+    </RegisterController>
+  );
 };
 
 export default RegisterConnector;
