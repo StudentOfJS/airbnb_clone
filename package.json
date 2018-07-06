@@ -1,5 +1,8 @@
 {
   "private": true,
+  "scripts": {
+    "build:server": "lerna run build --scope={@airbnb_clone/common,@airbnb_clone/server}"
+  },
   "workspaces": {
     "packages": [
       "packages/*"
