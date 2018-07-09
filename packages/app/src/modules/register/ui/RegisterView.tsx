@@ -1,14 +1,8 @@
 import * as React from "react";
-import * as AntD from "antd";
-import { withFormik, FormikErrors, FormikProps, Field, Form } from "formik";
+import { withFormik, FormikErrors, FormikProps, Field } from "formik";
 import { validUserSchema } from "@airbnb_clone/common";
 import InputField from "../../shared/InputField";
-
-const {
-  Form: { Item: FormItem },
-  Icon,
-  Button
-} = AntD;
+import { View, Button } from "react-native";
 
 interface FormValues {
   email: string;
@@ -34,46 +28,22 @@ class RegisterForm extends React.PureComponent<
   render() {
     const { handleSubmit } = this.props;
     return (
-      <div style={{ display: "flex" }}>
-        <Form style={{ margin: "auto" }} onSubmit={handleSubmit}>
-          <Field
-            name="email"
-            // tslint:disable-next-line:jsx-no-multiline-js
-            prefix={
-              <Icon type="user" style={{ color: "rgba(0,0,0,.25)" }} /> as any
-              // tslint:disable-next-line:jsx-curly-spacing
-            }
-            placeholder="email"
-            component={InputField}
-          />
-          <Field
-            name="password"
-            // tslint:disable-next-line:jsx-no-multiline-js
-            prefix={
-              <Icon type="lock" style={{ color: "rgba(0,0,0,.25)" }} /> as any
-              // tslint:disable-next-line:jsx-curly-spacing
-            }
-            placeholder="password"
-            type="password"
-            component={InputField}
-          />
-          <FormItem>
-            <Button
-              type="primary"
-              htmlType="submit"
-              className="login-form-button"
-            >
-              Register
-            </Button>{" "}
-            Or <a href="">Login</a>
-          </FormItem>
-          <FormItem>
-            <a className="login-form-forgot" href="">
-              Forgot password
-            </a>
-          </FormItem>
-        </Form>
-      </div>
+      <View style={{ width: 400, margin: "auto" }}>
+        <Field
+          name="email"
+          // tslint:disable-next-line:jsx-no-multiline-js
+          placeholder="email"
+          component={InputField}
+        />
+        <Field
+          name="password"
+          // tslint:disable-next-line:jsx-no-multiline-js
+          placeholder="password"
+          type="password"
+          component={InputField}
+        />
+        <Button title="submit" onPress={handleSubmit as any} />
+      </View>
     );
   }
 }

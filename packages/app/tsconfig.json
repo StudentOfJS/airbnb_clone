@@ -4,7 +4,8 @@
     "module": "commonjs",
     "jsx": "react-native",
     "strict": true,
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "lib": ["es2015", "es6", "dom", "esnext.asynciterable"]
   },
   "rootDir": "src",
   "forceConsistentCasingInFileNames": true,
