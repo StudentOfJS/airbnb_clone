@@ -31,13 +31,13 @@ class RegisterForm extends React.PureComponent<
       <View style={{ width: 400, margin: "auto" }}>
         <Field
           name="email"
-          // tslint:disable-next-line:jsx-no-multiline-js
+          secureTextEntry={false}
           placeholder="email"
           component={InputField}
         />
         <Field
           name="password"
-          // tslint:disable-next-line:jsx-no-multiline-js
+          secureTextEntry={true}
           placeholder="password"
           type="password"
           component={InputField}
