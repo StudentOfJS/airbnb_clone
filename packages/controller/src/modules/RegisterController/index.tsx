@@ -1,7 +1,7 @@
 import * as React from "react";
 import { graphql, ChildMutateProps } from "react-apollo";
 import gql from "graphql-tag";
-import { register, registerVariables } from "../../operation-result-types";
+import { register, registerVariables } from "../../schemaTypes";
 
 interface Props {
   children: (
