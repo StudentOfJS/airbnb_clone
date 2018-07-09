@@ -1,8 +1,8 @@
 import * as React from "react";
 import * as AntD from "antd";
-import { withFormik, FormikErrors, FormikProps, Field, Form } from "formik";
-import { validUserSchema } from "@airbnb_clone/common";
+import { withFormik, FormikProps, Field, Form } from "formik";
 import InputField from "../../shared/InputField";
+import { loginSchema } from "@airbnb_clone/common";
 import { Link } from "react-router-dom";
 
 const {
@@ -17,12 +17,10 @@ interface FormValues {
 }
 
 interface Props {
-  submit: (values: FormValues) => Promise<FormikErrors<FormValues> | null>;
+  submit: (values: FormValues) => Promise<{ [key: string]: string } | null>;
 }
 
-class RegisterForm extends React.PureComponent<
-  FormikProps<FormValues> & Props
-> {
+class LoginForm extends React.PureComponent<FormikProps<FormValues> & Props> {
   validate = (touched: boolean | undefined, errors: any) => {
     if (!touched) {
       return "validating";
@@ -64,9 +62,9 @@ class RegisterForm extends React.PureComponent<
               htmlType="submit"
               className="login-form-button"
             >
-              Register
+              Login
             </Button>{" "}
-            Or <Link to="/login">Login</Link>
+            Or <Link to="/register">Register</Link>
           </FormItem>
           <FormItem>
             <a className="login-form-forgot" href="">
@@ -79,10 +77,10 @@ class RegisterForm extends React.PureComponent<
   }
 }
 
-export const RegisterView = withFormik<Props, FormValues>({
-  validateOnChange: true,
+export const LoginView = withFormik<Props, FormValues>({
+  validateOnChange: false,
   validateOnBlur: false,
-  validationSchema: validUserSchema,
+  validationSchema: loginSchema,
   mapPropsToValues: () => ({ email: "", password: "" }),
   handleSubmit: async (values, { props, setErrors, setSubmitting }) => {
     const errors = await props.submit(values);
@@ -90,4 +88,4 @@ export const RegisterView = withFormik<Props, FormValues>({
       setErrors(errors);
     }
   }
-})(RegisterForm);
+})(LoginForm);

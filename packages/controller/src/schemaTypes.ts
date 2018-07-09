@@ -4,6 +4,44 @@
 // This file was automatically generated and should not be edited.
 
 // ====================================================
+// GraphQL mutation operation: sendForgotPasswordEmail
+// ====================================================
+
+export interface sendForgotPasswordEmail {
+  sendForgotPasswordEmail: boolean | null;
+}
+
+export interface sendForgotPasswordEmailVariables {
+  email: string;
+}
+
+
+/* tslint:disable */
+// This file was automatically generated and should not be edited.
+
+// ====================================================
+// GraphQL mutation operation: loginMutation
+// ====================================================
+
+export interface loginMutation_login {
+  path: string;
+  message: string;
+}
+
+export interface loginMutation {
+  login: loginMutation_login[] | null;
+}
+
+export interface loginMutationVariables {
+  email: string;
+  password: string;
+}
+
+
+/* tslint:disable */
+// This file was automatically generated and should not be edited.
+
+// ====================================================
 // GraphQL mutation operation: register
 // ====================================================
 
