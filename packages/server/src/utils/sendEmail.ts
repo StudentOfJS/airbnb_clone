@@ -1,26 +1,35 @@
-import * as SparkPost from "sparkpost";
-const client = new SparkPost(process.env.SPARKPOST_API_KEY);
+import * as nodemailer from "nodemailer";
 
 export const sendEmail = async (
   recipient: string,
   url: string,
   linkText: string
 ) => {
-  const response = await client.transmissions.send({
-    options: {
-      sandbox: true
-    },
-    content: {
-      from: "testing@sparkpostbox.com",
-      subject: "Confirm Email",
-      html: `<html>
-        <body>
-        <p>Testing SparkPost - the world's most awesomest email service!</p>
-        <a href="${url}">${linkText}</a>
-        </body>
-        </html>`
-    },
-    recipients: [{ address: recipient }]
+  const transporter = nodemailer.createTransport({
+    host: "smtp.ethereal.email",
+    port: 587,
+    auth: {
+      user: "odk2d4laogjzirja@ethereal.email",
+      pass: "YfWneNaBEsfEU47p2Q"
+    }
   });
-  console.log(response);
+
+  // Message object
+  const message = {
+    from: "Sender Name <sender@example.com>",
+    to: recipient,
+    subject: "Confirm your airbnb_clone account ✔",
+    text: "Confirm Email",
+    html: `<p>Confirm airbnb_clone account</p><a href="${url}">${linkText}</a>`
+  };
+
+  transporter.sendMail(message, (err, info) => {
+    if (err) {
+      console.log("Error occurred. " + err.message);
+    }
+
+    console.log("Message sent: %s", info.messageId);
+    // Preview only available when sending through an Ethereal account
+    console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
+  });
 };
