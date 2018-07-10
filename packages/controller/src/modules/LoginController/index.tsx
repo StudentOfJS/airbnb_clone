@@ -5,6 +5,7 @@ import { loginMutationVariables, loginMutation } from "../../schemaTypes";
 import { normalizeErrors } from "../../utils/normalizeErrors";
 
 interface Props {
+  onSessionId?: (sessionId: string) => void;
   children: (
     data: {
       submit: (
@@ -20,12 +21,17 @@ class C extends React.PureComponent<
   submit = async (values: loginMutationVariables) => {
     console.log(values);
     const {
-      data: { login }
+      data: {
+        login: { errors, sessionId }
+      }
     } = await this.props.mutate({ variables: values });
-    console.log(`response: ${JSON.stringify(login)}`);
+    console.log("response", errors, sessionId);
 
-    if (login) {
-      return normalizeErrors(login);
+    if (errors) {
+      return normalizeErrors(errors);
+    }
+    if (sessionId && this.props.onSessionId) {
+      this.props.onSessionId(sessionId);
     }
     return null;
   };
