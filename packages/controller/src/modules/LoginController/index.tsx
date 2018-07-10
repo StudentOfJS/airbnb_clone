@@ -3,6 +3,7 @@ import { graphql, ChildMutateProps } from "react-apollo";
 import gql from "graphql-tag";
 import { loginMutationVariables, loginMutation } from "../../schemaTypes";
 import { normalizeErrors } from "../../utils/normalizeErrors";
+import { NormalizedErrorMap } from "../types/NormailizedErrorMap";
 
 interface Props {
   onSessionId?: (sessionId: string) => void;
@@ -10,7 +11,7 @@ interface Props {
     data: {
       submit: (
         values: loginMutationVariables
-      ) => Promise<{ [key: string]: string } | null>;
+      ) => Promise<NormalizedErrorMap | null>;
     }
   ) => JSX.Element | null;
 }
