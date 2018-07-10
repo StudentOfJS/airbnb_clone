@@ -38,8 +38,11 @@ class C extends React.PureComponent<
 const loginMutation = gql`
   mutation loginMutation($email: String!, $password: String!) {
     login(email: $email, password: $password) {
-      path
-      message
+      errors {
+        path
+        message
+      }
+      sessionId
     }
   }
 `;
