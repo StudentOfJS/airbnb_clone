@@ -1,9 +1,10 @@
 import * as React from "react";
 import * as AntD from "antd";
-import { withFormik, FormikErrors, FormikProps, Field, Form } from "formik";
+import { withFormik, FormikProps, Field, Form } from "formik";
 import { validUserSchema } from "@airbnb_clone/common";
 import InputField from "../../shared/InputField";
 import { Link } from "react-router-dom";
+import { NormalizedErrorMap } from "@airbnb_clone/controller";
 
 const {
   Form: { Item: FormItem },
@@ -17,7 +18,7 @@ interface FormValues {
 }
 
 interface Props {
-  submit: (values: FormValues) => Promise<FormikErrors<FormValues> | null>;
+  submit: (values: FormValues) => Promise<NormalizedErrorMap | null>;
 }
 
 class RegisterForm extends React.PureComponent<
@@ -69,9 +70,7 @@ class RegisterForm extends React.PureComponent<
             Or <Link to="/login">Login</Link>
           </FormItem>
           <FormItem>
-            <a className="login-form-forgot" href="">
-              Forgot password
-            </a>
+            <Link to="/forgot-password">forgot password</Link>
           </FormItem>
         </Form>
       </div>
