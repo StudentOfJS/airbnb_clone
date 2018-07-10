@@ -4,15 +4,15 @@ import { formatYupError } from "../../../utils/formatYupError";
 import { duplicateEmail } from "./errorMessages";
 import { validUserSchema } from "@airbnb_clone/common";
 
-import { createConfirmEmailLink } from "./createConfirmEmailLink";
-import { sendEmail } from "../../../utils/sendEmail";
+// import { createConfirmEmailLink } from "./createConfirmEmailLink";
+// import { sendEmail } from "../../../utils/sendEmail";
 
 export const resolvers: ResolverMap = {
   Mutation: {
     register: async (
       _,
-      args: GQL.IRegisterOnMutationArguments,
-      { redis, url }
+      args: GQL.IRegisterOnMutationArguments
+      // { redis, url }
     ) => {
       try {
         await validUserSchema.validate(args, { abortEarly: false });
@@ -38,18 +38,19 @@ export const resolvers: ResolverMap = {
 
       const user = User.create({
         email,
-        password
+        password,
+        confirmed: true
       });
 
       await user.save();
-
-      if (process.env.NODE_ENV !== "test") {
-        await sendEmail(
-          email,
-          await createConfirmEmailLink(url, user.id, redis),
-          "confirm email"
-        );
-      }
+      // commmented out sending of confirmation email for live testing app
+      // if (process.env.NODE_ENV !== "test") {
+      //   await sendEmail(
+      //     email,
+      //     await createConfirmEmailLink(url, user.id, redis),
+      //     "confirm email"
+      //   );
+      // }
 
       return null;
     }
