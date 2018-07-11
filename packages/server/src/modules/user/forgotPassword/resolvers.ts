@@ -1,18 +1,14 @@
-import * as yup from "yup";
 import * as bcrypt from "bcryptjs";
-
 import { ResolverMap } from "../../../types/graphql-utils";
 import { createForgotPasswordLink } from "../../../utils/createForgotPasswordLink";
 import { User } from "../../../entity/User";
 import { expiredKeyError } from "./errorMessages";
 import { forgotPasswordPrefix } from "../../../constants";
-import { registerPasswordValidation } from "@airbnb_clone/common";
+import { ChangePasswordSchema } from "@airbnb_clone/common";
 import { formatYupError } from "../../../utils/formatYupError";
 import { sendEmail } from "../../../utils/sendEmail";
 
-const schema = yup.object().shape({
-  newPassword: registerPasswordValidation
-});
+const schema = ChangePasswordSchema;
 
 export const resolvers: ResolverMap = {
   Mutation: {

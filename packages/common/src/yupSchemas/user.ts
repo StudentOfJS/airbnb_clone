@@ -35,3 +35,7 @@ export const loginSchema = yup.object().shape({
     .max(255, invalidLogin)
     .required(invalidLogin)
 });
+
+export const ChangePasswordSchema = yup.object().shape({
+  newPassword: registerPasswordValidation
+});
