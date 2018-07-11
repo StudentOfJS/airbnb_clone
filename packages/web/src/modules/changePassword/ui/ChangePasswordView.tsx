@@ -4,6 +4,8 @@ import { withFormik, FormikProps, Field, Form } from "formik";
 import InputField from "../../shared/InputField";
 // import { Link } from "react-router-dom";
 import { NormalizedErrorMap } from "@airbnb_clone/controller";
+import { ChangePasswordSchema } from "@airbnb_clone/common";
+
 const {
   Form: { Item: FormItem },
   Icon,
@@ -61,6 +63,7 @@ class ChangePasswordForm extends React.PureComponent<
 }
 
 export const ChangePasswordView = withFormik<Props, FormValues>({
+  validationSchema: ChangePasswordSchema,
   mapPropsToValues: () => ({ newPassword: "" }),
   handleSubmit: async (values, { props, setErrors }) => {
     const errors = await props.submit(values);
