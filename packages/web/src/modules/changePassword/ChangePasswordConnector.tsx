@@ -7,15 +7,17 @@ import { ChangePasswordView } from "./ui/ChangePasswordView";
 const ChangePasswordConnector: React.SFC<
   RouteComponentProps<{ key: string }>
 > = ({
+  history,
   match: {
     params: { key }
   }
 }) => {
-  console.log(key);
+  const onFinish = () => history.push("/login");
   return (
     <ChangePasswordController>
       {({ submit }: { submit: any }) => (
         <ChangePasswordView
+          onFinish={onFinish}
           // tslint:disable-next-line:jsx-no-lambda
           submit={async ({ newPassword }) =>
             submit({
