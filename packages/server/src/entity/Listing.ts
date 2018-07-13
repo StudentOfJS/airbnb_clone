@@ -1,11 +1,4 @@
-import * as bcrypt from "bcryptjs";
-import {
-  Entity,
-  Column,
-  BaseEntity,
-  PrimaryGeneratedColumn,
-  BeforeInsert
-} from "typeorm";
+import { Entity, Column, BaseEntity, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity("listings")
 export class Listing extends BaseEntity {
