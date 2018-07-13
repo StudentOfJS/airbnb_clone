@@ -1,5 +1,12 @@
-import { Entity, Column, BaseEntity, PrimaryGeneratedColumn } from "typeorm";
-
+import {
+  Entity,
+  Column,
+  BaseEntity,
+  PrimaryGeneratedColumn,
+  ManyToOne,
+  JoinColumn
+} from "typeorm";
+import { User } from "./User";
 @Entity("listings")
 export class Listing extends BaseEntity {
   @PrimaryGeneratedColumn("uuid") id: string;
@@ -24,4 +31,10 @@ export class Listing extends BaseEntity {
 
   @Column("text", { array: true })
   amenities: string[];
+
+  @Column("uuid") ownerId: string;
+
+  @ManyToOne(() => User, user => user.listings)
+  @JoinColumn({ name: "ownerId" })
+  user: User;
 }
