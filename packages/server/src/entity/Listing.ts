@@ -3,8 +3,7 @@ import {
   Column,
   BaseEntity,
   PrimaryGeneratedColumn,
-  ManyToOne,
-  JoinColumn
+  ManyToOne
 } from "typeorm";
 import { User } from "./User";
 @Entity("listings")
@@ -19,6 +18,9 @@ export class Listing extends BaseEntity {
   @Column("varchar", { length: 255 })
   description: string;
 
+  @Column("varchar", { length: 255 })
+  category: string;
+
   @Column("int") price: number;
 
   @Column("int") beds: number;
@@ -32,9 +34,6 @@ export class Listing extends BaseEntity {
   @Column("text", { array: true })
   amenities: string[];
 
-  @Column("uuid") ownerId: string;
-
   @ManyToOne(() => User, user => user.listings)
-  @JoinColumn({ name: "ownerId" })
   user: User;
 }
