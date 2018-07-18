@@ -4,6 +4,22 @@
 // This file was automatically generated and should not be edited.
 
 // ====================================================
+// GraphQL query operation: meQuery
+// ====================================================
+
+export interface meQuery_me {
+  email: string;
+}
+
+export interface meQuery {
+  me: meQuery_me | null;
+}
+
+
+/* tslint:disable */
+// This file was automatically generated and should not be edited.
+
+// ====================================================
 // GraphQL mutation operation: forgotPasswordChange
 // ====================================================
 

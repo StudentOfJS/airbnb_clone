@@ -4,3 +4,4 @@ export * from "./modules/ForgotPasswordController";
 export * from "./modules/LoginController";
 export * from "./modules/types/NormailizedErrorMap";
 export * from "./modules/ChangePasswordController";
+export * from "./modules/auth/AuthRoute";

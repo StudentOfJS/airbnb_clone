@@ -5,6 +5,7 @@ import LoginConnector from "../modules/login/LoginConnector";
 import ForgotPasswordConnector from "../modules/forgotPassword/ForgotPasswordConnector";
 import ChangePasswordConnector from "../modules/changePassword/ChangePasswordConnector";
 import { TextPage } from "../modules/textPage";
+import { AuthRoute } from "@airbnb_clone/controller";
 
 export const Routes = () => (
   <BrowserRouter>
@@ -22,6 +23,7 @@ export const Routes = () => (
         component={ChangePasswordConnector}
       />
       <Route path="/m" component={TextPage} />
+      <AuthRoute path="/create-listing" component={TextPage} />
     </Switch>
   </BrowserRouter>
 );
