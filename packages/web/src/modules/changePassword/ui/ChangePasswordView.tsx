@@ -34,10 +34,9 @@ class ChangePasswordForm extends React.PureComponent<
     return "success";
   };
   render() {
-    const { handleSubmit } = this.props;
     return (
       <div style={{ display: "flex" }}>
-        <Form style={{ margin: "auto" }} onSubmit={handleSubmit}>
+        <Form style={{ margin: "auto" }}>
           <Field
             name="newPassword"
             type="password"
