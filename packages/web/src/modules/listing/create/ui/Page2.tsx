@@ -9,18 +9,21 @@ const Page2: React.SFC = () => (
       name="price"
       placeholder="Price"
       component={InputField}
+      useNumberComponent={true}
     />
     <Field
       label="Beds:"
       name="beds"
       placeholder="Beds"
       component={InputField}
+      useNumberComponent={true}
     />
     <Field
       label="Guests:"
       name="guests"
       placeholder="Guests"
       component={InputField}
+      useNumberComponent={true}
     />
   </React.Fragment>
 );

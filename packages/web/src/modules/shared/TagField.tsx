@@ -1,37 +1,31 @@
 import * as React from "react";
 import { FieldProps } from "formik";
-import { Form, Input, InputNumber } from "antd";
+import { Form, Select } from "antd";
 
 const FormItem = Form.Item;
 
-const InputField: React.SFC<
+const TagField: React.SFC<
   FieldProps<any> & {
     prefix: React.ReactNode;
     label?: string;
-    useNumberComponent?: boolean;
   }
 > = ({
-  field: { onChange, ...field },
+  field: { onChange, onBlur: _, ...field },
   form: { touched, errors, setFieldValue },
   label,
-  useNumberComponent = false,
   ...props
 }) => {
   const errorMsg = touched[field.name] && errors[field.name];
   const status = errorMsg ? "error" : undefined;
-  const Comp = useNumberComponent ? InputNumber : Input;
   return (
     <FormItem label={label} help={errorMsg} validateStatus={status}>
-      <Comp
+      <Select
         {...field}
         {...props}
-        onChange={
-          useNumberComponent
-            ? (newValue: any) => setFieldValue(field.name, newValue)
-            : onChange
-        }
+        mode="tags"
+        onChange={(newValue: any) => setFieldValue(field.name, newValue)}
       />
     </FormItem>
   );
 };
-export default InputField;
+export default TagField;
