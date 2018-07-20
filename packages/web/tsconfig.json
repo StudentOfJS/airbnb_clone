@@ -1,6 +1,9 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
+    "baseUrl": "..",
+    "paths": {
+      "@airbnb_clone": ["./*/src"]
+    },
     "outDir": "build/dist",
     "module": "esnext",
     "target": "es5",
