@@ -58,7 +58,13 @@ export class CreateListingConnector extends React.PureComponent<
           <div style={{ display: "flex" }}>
             <Form style={{ margin: "auto" }}>
               {pages[this.state.page]}
-              <FormItem>
+              <FormItem
+                style={{
+                  display: "flex",
+                  justifyContent: "flex-end",
+                  width: 400
+                }}
+              >
                 {this.state.page === 3 ? (
                   <Button
                     type="primary"
