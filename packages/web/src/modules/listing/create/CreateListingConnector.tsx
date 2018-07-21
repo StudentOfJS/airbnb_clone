@@ -5,6 +5,7 @@ import { Formik, Form } from "formik";
 import Page1 from "./ui/Page1";
 import Page2 from "./ui/Page2";
 import Page3 from "./ui/Page3";
+import { withCreateListing } from "@airbnb_clone/controller";
 
 const {
   Form: { Item: FormItem },
@@ -29,10 +30,7 @@ interface State {
 
 const pages = { 1: <Page1 />, 2: <Page2 />, 3: <Page3 /> };
 
-export class CreateListingConnector extends React.PureComponent<
-  RouteComponentProps<{}>,
-  State
-> {
+class C extends React.PureComponent<RouteComponentProps<{}>, State> {
   state = { page: 1 };
   submit = (values: any) => {
     console.log(values);
@@ -56,34 +54,38 @@ export class CreateListingConnector extends React.PureComponent<
       >
         {() => (
           <div style={{ display: "flex" }}>
-            <Form style={{ margin: "auto" }}>
+            <Form style={{ margin: "auto", paddingTop: 20 }}>
               {pages[this.state.page]}
-              <FormItem
+              <div
                 style={{
                   display: "flex",
                   justifyContent: "flex-end",
-                  width: 400
+                  width: 300
                 }}
               >
-                {this.state.page === 3 ? (
-                  <Button
-                    type="primary"
-                    htmlType="submit"
-                    className="login-form-button"
-                  >
-                    create listing
-                  </Button>
-                ) : (
-                  <Button
-                    onClick={this.nextPage}
-                    type="primary"
-                    htmlType="button"
-                    className="login-form-button"
-                  >
-                    next page
-                  </Button>
-                )}
-              </FormItem>
+                <FormItem>
+                  {this.state.page === 3 ? (
+                    <div>
+                      <Button
+                        type="primary"
+                        htmlType="submit"
+                        className="login-form-button"
+                      >
+                        create listing
+                      </Button>
+                    </div>
+                  ) : (
+                    <Button
+                      onClick={this.nextPage}
+                      type="primary"
+                      htmlType="button"
+                      className="login-form-button"
+                    >
+                      next page
+                    </Button>
+                  )}
+                </FormItem>
+              </div>
             </Form>
           </div>
         )}
@@ -91,3 +93,5 @@ export class CreateListingConnector extends React.PureComponent<
     );
   }
 }
+
+export const CreateListingConnector = withCreateListing(C);

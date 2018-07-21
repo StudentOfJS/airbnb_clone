@@ -42,6 +42,30 @@ export interface forgotPasswordChangeVariables {
 // This file was automatically generated and should not be edited.
 
 // ====================================================
+// GraphQL mutation operation: CreateListing
+// ====================================================
+
+export interface CreateListing {
+  createListing: boolean;
+}
+
+export interface CreateListingVariables {
+  name: string;
+  category: string;
+  description: string;
+  price: number;
+  beds: number;
+  guests: number;
+  lat: number;
+  long: number;
+  amenities: string[];
+}
+
+
+/* tslint:disable */
+// This file was automatically generated and should not be edited.
+
+// ====================================================
 // GraphQL mutation operation: sendForgotPasswordEmail
 // ====================================================
 
