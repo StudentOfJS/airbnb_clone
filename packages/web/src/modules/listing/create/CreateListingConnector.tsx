@@ -1,7 +1,7 @@
 import * as React from "react";
 import { RouteComponentProps } from "react-router-dom";
 import * as AntD from "antd";
-import { Formik, Form } from "formik";
+import { Formik, Form, FormikActions } from "formik";
 import Page1 from "./ui/Page1";
 import Page2 from "./ui/Page2";
 import Page3 from "./ui/Page3";
@@ -38,8 +38,12 @@ class C extends React.PureComponent<
   State
 > {
   state = { page: 1 };
-  submit = (values: FormValues) => {
-    this.props.createListing(values);
+  submit = async (
+    values: FormValues,
+    { setSubmitting }: FormikActions<FormValues>
+  ) => {
+    await this.props.createListing(values);
+    setSubmitting(false);
   };
   nextPage = () => this.setState(prevState => ({ page: prevState.page + 1 }));
   render() {
@@ -58,7 +62,7 @@ class C extends React.PureComponent<
         }}
         onSubmit={this.submit}
       >
-        {() => (
+        {({ isSubmitting, isValid }) => (
           <div style={{ display: "flex" }}>
             <Form style={{ margin: "auto", paddingTop: 20 }}>
               {pages[this.state.page]}
@@ -76,6 +80,7 @@ class C extends React.PureComponent<
                         type="primary"
                         htmlType="submit"
                         className="login-form-button"
+                        disabled={!isValid || isSubmitting}
                       >
                         create listing
                       </Button>
@@ -86,6 +91,7 @@ class C extends React.PureComponent<
                       type="primary"
                       htmlType="button"
                       className="login-form-button"
+                      disabled={!isValid}
                     >
                       next page
                     </Button>

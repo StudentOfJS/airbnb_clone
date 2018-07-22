@@ -80,7 +80,7 @@ export const LoginView = withFormik<Props, FormValues>({
   validateOnBlur: false,
   validationSchema: loginSchema,
   mapPropsToValues: () => ({ email: "", password: "" }),
-  handleSubmit: async (values, { props, setErrors, setSubmitting }) => {
+  handleSubmit: async (values, { props, setErrors }) => {
     const errors = await props.submit(values);
     if (errors) {
       setErrors(errors);
