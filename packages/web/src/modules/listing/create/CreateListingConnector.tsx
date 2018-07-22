@@ -5,7 +5,10 @@ import { Formik, Form } from "formik";
 import Page1 from "./ui/Page1";
 import Page2 from "./ui/Page2";
 import Page3 from "./ui/Page3";
-import { withCreateListing } from "@airbnb_clone/controller";
+import {
+  withCreateListing,
+  NewPropsCreateListing
+} from "@airbnb_clone/controller";
 
 const {
   Form: { Item: FormItem },
@@ -30,19 +33,22 @@ interface State {
 
 const pages = { 1: <Page1 />, 2: <Page2 />, 3: <Page3 /> };
 
-class C extends React.PureComponent<RouteComponentProps<{}>, State> {
+class C extends React.PureComponent<
+  RouteComponentProps<{}> & NewPropsCreateListing,
+  State
+> {
   state = { page: 1 };
-  submit = (values: any) => {
-    console.log(values);
+  submit = (values: FormValues) => {
+    this.props.createListing(values);
   };
   nextPage = () => this.setState(prevState => ({ page: prevState.page + 1 }));
   render() {
     return (
       <Formik<{}, FormValues>
         initialValues={{
-          name: "string",
-          description: "string",
-          category: "string",
+          name: "",
+          description: "",
+          category: "",
           price: 0,
           beds: 0,
           guests: 0,

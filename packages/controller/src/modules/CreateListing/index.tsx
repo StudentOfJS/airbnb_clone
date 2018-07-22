@@ -42,11 +42,11 @@ export const withCreateListing = graphql<
   NewPropsCreateListing
 >(CreateListingMutation, {
   props: ({ mutate }) => ({
-    createListing: variables => {
+    createListing: async variables => {
       if (!mutate) {
         return;
       }
-      mutate({ variables });
+      await mutate({ variables });
     }
   })
 });
