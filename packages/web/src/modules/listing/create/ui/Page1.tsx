@@ -1,6 +1,7 @@
 import * as React from "react";
 import { Field } from "formik";
 import InputField from "../../../shared/InputField";
+import DropzoneField from "../../../shared/DropzoneField";
 
 const Page1: React.SFC = () => (
   <React.Fragment>
@@ -22,6 +23,7 @@ const Page1: React.SFC = () => (
       placeholder="Category"
       component={InputField}
     />
+    <Field label="Picture:" name="picture" component={DropzoneField} />
   </React.Fragment>
 );
 

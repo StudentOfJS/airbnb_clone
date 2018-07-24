@@ -6,6 +6,7 @@ import Page1 from "./ui/Page1";
 import Page2 from "./ui/Page2";
 import Page3 from "./ui/Page3";
 import { withCreateListing, WithCreateListing } from "@airbnb_clone/controller";
+import { ImageFile } from "react-dropzone";
 
 const {
   Form: { Item: FormItem },
@@ -13,6 +14,7 @@ const {
 } = AntD;
 
 interface FormValues {
+  picture: ImageFile | null;
   name: string;
   description: string;
   category: string;
@@ -47,6 +49,7 @@ class C extends React.PureComponent<
     return (
       <Formik<{}, FormValues>
         initialValues={{
+          picture: null,
           name: "",
           description: "",
           category: "",
