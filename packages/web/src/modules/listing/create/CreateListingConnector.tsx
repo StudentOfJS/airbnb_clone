@@ -5,10 +5,7 @@ import { Formik, Form, FormikActions } from "formik";
 import Page1 from "./ui/Page1";
 import Page2 from "./ui/Page2";
 import Page3 from "./ui/Page3";
-import {
-  withCreateListing,
-  NewPropsCreateListing
-} from "@airbnb_clone/controller";
+import { withCreateListing, WithCreateListing } from "@airbnb_clone/controller";
 
 const {
   Form: { Item: FormItem },
@@ -34,7 +31,7 @@ interface State {
 const pages = { 1: <Page1 />, 2: <Page2 />, 3: <Page3 /> };
 
 class C extends React.PureComponent<
-  RouteComponentProps<{}> & NewPropsCreateListing,
+  RouteComponentProps<{}> & WithCreateListing,
   State
 > {
   state = { page: 1 };
