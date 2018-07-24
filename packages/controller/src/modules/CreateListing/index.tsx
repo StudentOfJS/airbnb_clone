@@ -6,6 +6,7 @@ import { CreateListingVariables, CreateListing } from "../../schemaTypes";
 
 const CreateListingMutation = gql`
   mutation CreateListing(
+    $picture: Upload
     $name: String!
     $category: String!
     $description: String!
@@ -18,6 +19,7 @@ const CreateListingMutation = gql`
   ) {
     createListing(
       input: {
+        picture: $picture
         name: $name
         category: $category
         description: $description
