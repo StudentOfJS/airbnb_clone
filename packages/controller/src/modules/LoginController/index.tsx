@@ -20,13 +20,11 @@ class C extends React.PureComponent<
   ChildMutateProps<Props, loginMutation, loginMutationVariables>
 > {
   submit = async (values: loginMutationVariables) => {
-    console.log(values);
     const {
       data: {
         login: { errors, sessionId }
       }
     } = await this.props.mutate({ variables: values });
-    console.log("response", errors, sessionId);
 
     if (errors) {
       return normalizeErrors(errors);
