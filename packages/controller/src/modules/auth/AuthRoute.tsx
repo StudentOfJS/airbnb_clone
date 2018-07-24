@@ -13,7 +13,15 @@ class C extends React.PureComponent<ChildProps<Props, meQuery>> {
       return null;
     }
     if (!data.me) {
-      return <Redirect to="/login" />;
+      return (
+        <Redirect
+          // tslint:disable-next-line:jsx-no-multiline-js
+          to={{
+            pathname: "/login",
+            state: { next: routeProps.location.pathname }
+          }}
+        />
+      );
     }
     const Component = component as any;
     return <Component {...routeProps} />;
