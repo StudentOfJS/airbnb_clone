@@ -50,6 +50,7 @@ export interface CreateListing {
 }
 
 export interface CreateListingVariables {
+  picture?: any | null;
   name: string;
   category: string;
   description: string;
@@ -59,6 +60,24 @@ export interface CreateListingVariables {
   lat: number;
   long: number;
   amenities: string[];
+}
+
+
+/* tslint:disable */
+// This file was automatically generated and should not be edited.
+
+// ====================================================
+// GraphQL query operation: FindListingsQuery
+// ====================================================
+
+export interface FindListingsQuery_findListings {
+  id: string;
+  name: string;
+  pictureUrl: string;
+}
+
+export interface FindListingsQuery {
+  findListings: FindListingsQuery_findListings[];
 }
 
 
