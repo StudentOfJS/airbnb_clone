@@ -7,7 +7,7 @@ import ChangePasswordConnector from "../modules/changePassword/ChangePasswordCon
 import { TextPage } from "../modules/textPage";
 import { AuthRoute } from "@airbnb_clone/controller";
 import { CreateListingConnector } from "../modules/listing/create/CreateListingConnector";
-import FindListingsConnector from "../modules/listing/find/FindListingsConnector";
+import { FindListingsConnector } from "../modules/listing/find/FindListingsConnector";
 
 export const Routes = () => (
   <BrowserRouter>
