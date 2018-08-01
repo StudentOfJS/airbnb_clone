@@ -10,6 +10,7 @@ type Listing {
   long: Float!
   amenities: [String!]!
   pictureUrl: String!
+  owner: User!
 }
 
 type Query {
