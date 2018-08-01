@@ -5,9 +5,8 @@ import { createWriteStream } from "fs";
 
 const storeUpload = async (stream: any, mimetype: string): Promise<any> => {
   const extension = mimetype.split("/")[1];
-  const id = shortid.generate();
-  const path = `images/${id}.${extension}`;
-
+  const id = `${shortid.generate()}.${extension}`;
+  const path = `images/${id}`;
   return new Promise((resolve, reject) =>
     stream
       .pipe(createWriteStream(path))
