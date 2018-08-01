@@ -3,9 +3,10 @@ import { Listing } from "../../../entity/Listing";
 import * as shortid from "shortid";
 import { createWriteStream } from "fs";
 
-const storeUpload = async ({ stream }: any): Promise<any> => {
+const storeUpload = async (stream: any, mimetype: string): Promise<any> => {
+  const extension = mimetype.split("/")[1];
   const id = shortid.generate();
-  const path = `images/${id}`;
+  const path = `images/${id}.${extension}`;
 
   return new Promise((resolve, reject) =>
     stream
@@ -16,8 +17,8 @@ const storeUpload = async ({ stream }: any): Promise<any> => {
 };
 
 const processUpload = async (upload: any) => {
-  const { stream, filename } = await upload;
-  const { id } = await storeUpload({ stream, filename });
+  const { stream, mimetype } = await upload;
+  const { id } = await storeUpload(stream, mimetype);
   return id;
 };
 
