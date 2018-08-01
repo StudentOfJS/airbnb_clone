@@ -1,5 +1,5 @@
 import * as React from "react";
-import { RouteComponentProps } from "react-router-dom";
+import { RouteComponentProps, Link } from "react-router-dom";
 import * as AntD from "antd";
 import { Formik, Form, FormikActions } from "formik";
 import Page1 from "./ui/Page1";
@@ -65,6 +65,16 @@ class C extends React.PureComponent<
         {({ isSubmitting, isValid }) => (
           <div style={{ display: "flex" }}>
             <Form style={{ margin: "auto", paddingTop: 20 }}>
+              <div
+                style={{
+                  display: "inline-flex",
+                  justifyContent: "flex-end",
+                  padding: 20,
+                  width: 320
+                }}
+              >
+                <Link to="/logout">logout</Link>
+              </div>
               {pages[this.state.page]}
               <div
                 style={{

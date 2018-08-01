@@ -8,6 +8,7 @@ import { TextPage } from "../modules/textPage";
 import { AuthRoute } from "@airbnb_clone/controller";
 import { CreateListingConnector } from "../modules/listing/create/CreateListingConnector";
 import { FindListingsConnector } from "../modules/listing/find/FindListingsConnector";
+import Logout from "../modules/logout";
 
 export const Routes = () => (
   <BrowserRouter>
@@ -26,6 +27,7 @@ export const Routes = () => (
       />
       <Route path="/m" component={TextPage} />
       <AuthRoute path="/create-listing" component={CreateListingConnector} />
+      <Route path="/logout" component={Logout} />
       <Route path="/" component={FindListingsConnector} />
     </Switch>
   </BrowserRouter>
