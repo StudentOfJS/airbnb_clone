@@ -8,6 +8,7 @@ const LoginConnector: React.SFC<RouteComponentProps<{}>> = ({
   history,
   location: { state }
 }) => {
+  console.log(state);
   const onFinish = () => {
     if (state && state.next) {
       return history.push(state.next);
