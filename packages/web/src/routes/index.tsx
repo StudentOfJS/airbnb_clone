@@ -24,9 +24,9 @@ export const Routes = () => (
         path="/change-password/:key"
         component={ChangePasswordConnector}
       />
-      <Route path="/listings" component={FindListingsConnector} />
       <Route path="/m" component={TextPage} />
       <AuthRoute path="/create-listing" component={CreateListingConnector} />
+      <Route path="/" component={FindListingsConnector} />
     </Switch>
   </BrowserRouter>
 );
