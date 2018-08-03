@@ -3,6 +3,7 @@ Fullstack
 
 Airbnb clone site 
 -----------
+*[Ben Awad - youtube build along course](https://youtu.be/kuswGIH-Xj8)*
 Project uses yarn workspaces to bring together web, mobile and the backend.  
 
 
